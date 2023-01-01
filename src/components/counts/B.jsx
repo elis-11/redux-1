@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { increment } from '../redux/slices/sliceB';
+import { increment } from '../../redux/slices//counts/sliceB';
 
 
 export const B = () => {

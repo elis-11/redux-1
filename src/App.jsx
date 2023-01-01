@@ -1,7 +1,7 @@
 import "./App.css";
-import { A } from "./components/A";
-import { B } from "./components/B";
-import { C } from "./components/C";
+import { A } from "./components/counts/A";
+import { B } from "./components/counts/B";
+import { C } from "./components/counts/C";
 
 
 function App() {

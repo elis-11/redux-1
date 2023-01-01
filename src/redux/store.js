@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import sliceA from './slices/sliceA'
-import sliceB from './slices/sliceB'
-import sliceC from './slices/sliceC'
+import sliceA from './slices/counts/sliceA'
+import sliceB from './slices/counts/sliceB'
+import sliceC from './slices/counts/sliceC'
 
 export const store = configureStore({
   reducer: {
