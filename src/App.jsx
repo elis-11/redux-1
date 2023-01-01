@@ -1,16 +1,23 @@
-import "./App.css";
-import { A } from "./components/counts/A";
-import { B } from "./components/counts/B";
-import { C } from "./components/counts/C";
+import { NavLink, Route, Routes } from "react-router-dom";
+import { Counter } from "./components/counter/Counter";
+// import { Todo } from "./components/todo/Todo";
+import "./App.scss";
+import { Counts } from "./components/counts/Counts";
 
 
 function App() {
   return (
-
-    <div className="App">
-      <A />
-      <B />
-      <C />
+      <div className="App">
+      <nav className="nav">
+        <NavLink to='/'>Counter</NavLink>
+        <NavLink to='/counts'>Counts</NavLink>
+        {/* <NavLink to='/todo'>Todo</NavLink> */}
+      </nav>
+      <Routes>
+        <Route path="" element={<Counter />} />
+        <Route path="/counts/*" element={<Counts />} />
+        {/* <Route path="/todo" element={<Todo />} />   */}
+      </Routes>
     </div>
   );
 }
