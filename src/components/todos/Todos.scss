@@ -1,8 +1,32 @@
-.Todos{
+.Todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .add{
     display: flex;
-    flex-direction: column;
-    .Todo{
-        display: flex;
-        flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    input{
+      width: 42%;
+      height: 2rem;
+      left: 2rem;
     }
+  }
+    .todos {
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-width: 84%;
+      .todo {
+        display: flex;
+        justify-content: space-between;
+        color: #aaa;
+        // color: rgb(235, 216, 216);
+        background-color: #fff;
+        height: 2rem;
+        min-width: 100%;
+        border-bottom: 1px solid #aaa;
+    }
+  }
 }
