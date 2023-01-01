@@ -10,7 +10,7 @@ export const C = () => {
   return (
     <div>
       <h1>{stateC}</h1>
-      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(increment())}>+ 3</button>
     </div>
   );
 };

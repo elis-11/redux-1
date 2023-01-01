@@ -11,7 +11,7 @@ export const B = () => {
   return (
     <div>
       <h1>{stateB}</h1>
-      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(increment())}>+ 2</button>
     </div>
   );
 };

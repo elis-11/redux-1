@@ -9,7 +9,7 @@ export const sliceC = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1
+      state.value += 3
     },
   }, 
 })
