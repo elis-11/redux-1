@@ -1,8 +1,8 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 import { Counter } from "./components/counter/Counter";
-// import { Todo } from "./components/todo/Todo";
 import "./App.scss";
 import { Counts } from "./components/counts/Counts";
+import { Todos } from "./components/todos/Todos";
 
 
 function App() {
@@ -11,12 +11,12 @@ function App() {
       <nav className="nav">
         <NavLink to='/'>Counter</NavLink>
         <NavLink to='/counts'>Counts</NavLink>
-        {/* <NavLink to='/todo'>Todo</NavLink> */}
+        <NavLink to='/todos'>Todos</NavLink>
       </nav>
       <Routes>
         <Route path="" element={<Counter />} />
         <Route path="/counts/*" element={<Counts />} />
-        {/* <Route path="/todo" element={<Todo />} />   */}
+        <Route path="/todos/*" element={<Todos />} />  
       </Routes>
     </div>
   );
