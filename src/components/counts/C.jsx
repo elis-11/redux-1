@@ -5,7 +5,7 @@ export const C = () => {
   const stateC = useSelector((state) => state.sliceC.value);
   const dispatch = useDispatch();
 
-  console.log("ComponentA Rerender");
+  console.log("ComponentC Rerender");
 
   return (
     <div>

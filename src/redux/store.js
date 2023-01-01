@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     sliceA,
     sliceB,
-    sliceC
+    sliceC,
   },
 })
 
