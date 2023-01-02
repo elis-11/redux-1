@@ -5,9 +5,9 @@ import "./Todos.scss";
 
 export const TodoRT = () => {
   const [newTodo, setNewTodo] = useState('')
-  const todos = useSelector((state) => state.todoRT.todos);
-  const count = useSelector((state) => state.todoRT.count)
-  // const {count, todos} = useSelector((state) => state.todoRT)
+  // const todos = useSelector((state) => state.todoRT.todos);
+  // const count = useSelector((state) => state.todoRT.count)
+  const {count, todos} = useSelector((state) => state.todoRT)
   const dispatch = useDispatch();
   const inputRef = useRef()
 
@@ -23,8 +23,7 @@ export const TodoRT = () => {
   return (
     <div className="Todo">
       <h2>Todo-Redux-Toolkit</h2>
-      <div className="add">
-        <form onSubmit={handleAddTodo}>
+        <form onSubmit={handleAddTodo} className="todo">
           <input
             ref={inputRef}
             type="text"
@@ -35,13 +34,13 @@ export const TodoRT = () => {
           />
           <button type="submit">Add</button>
         </form>
-      </div>
       <div className="todos">
         {count > 0 && 
-        todos.map((todo) => (
+        todos.map((todo, index) => (
           <div key={todo.id} className="todo" >
-            <div className="title">{todo.title}</div>
-            <button onClick={handleRemoveTodo}>Delete</button>
+            <div className="title">{index + 1}{':'} {todo.title}</div>
+            <button onClick={()=>handleRemoveTodo(todo.id)}>Delete</button>
+            {/* <button onClick={()=> dispatch(removeTodo(todo.id))}>Delete</button> */}
           </div>
         ))
       }

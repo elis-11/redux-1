@@ -11,7 +11,7 @@ export const todoRTSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const todo = {
-        id: new Date(),
+        id: new Date().toString(),
         title: action.payload,
       };
       state.todos.push(todo);
