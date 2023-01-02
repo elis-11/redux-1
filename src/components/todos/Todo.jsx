@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import "./Todos.scss";
 
 export const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -14,12 +15,12 @@ export const Todo = () => {
     };
     setTodos([...todos, addTodo]);
     setNewTodo({ ...newTodo, title: "", description: "" });
-    inputRef.current.focus()
+    inputRef.current.focus();
   };
 
   return (
     <div className="Todo">
-      <h1>Todo</h1>
+      <h2>Todo</h2>
       <div className="add">
         <input
           ref={inputRef}
@@ -38,13 +39,13 @@ export const Todo = () => {
             setNewTodo({ ...newTodo, description: e.target.value });
           }}
         />
-        <button onClick={createTodo}>Create Todo</button>
+        <button onClick={createTodo}>Add</button>
       </div>
       <div className="todos">
         {todos.map((todo) => (
           <div key={todo._id} className="todo">
             <div className="title">{todo.title}</div>
-            <div className="title">{todo.description}</div>
+            <div className="description">{todo.description}</div>
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   todos: [],
   count: 0,
-}
+};
 
 export const todoRTSlice = createSlice({
   name: "todoRT",
@@ -11,16 +11,16 @@ export const todoRTSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const todo = {
-        _id: new Date(),
+        id: new Date(),
         title: action.payload,
       };
       state.todos.push(todo);
       state.count += 1;
     },
     removeTodo: (state, action) => {
-      state.todos = state.todos.filter(todo => todo._id!== action.payload)
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
       state.count -= 1;
-    }
+    },
   },
 });
 

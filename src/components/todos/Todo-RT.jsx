@@ -5,9 +5,9 @@ import "./Todos.scss";
 
 export const TodoRT = () => {
   const [newTodo, setNewTodo] = useState('')
-  // const todos = useSelector((state) => state.todoRT.todos);
-  // const count = useSelector((state) => state.todoRT.count)
-  const {count, todos} = useSelector((state) => state.todoRT)
+  const todos = useSelector((state) => state.todoRT.todos);
+  const count = useSelector((state) => state.todoRT.count)
+  // const {count, todos} = useSelector((state) => state.todoRT)
   const dispatch = useDispatch();
   const inputRef = useRef()
 
@@ -17,8 +17,8 @@ export const TodoRT = () => {
     setNewTodo('')
     inputRef.current.focus();
   };
-  const handleRemoveTodo = (_id) => {
-    dispatch(removeTodo(_id));
+  const handleRemoveTodo = (id) => {
+    dispatch(removeTodo(id));
   }
   return (
     <div className="Todo">
@@ -29,7 +29,8 @@ export const TodoRT = () => {
             ref={inputRef}
             type="text"
             placeholder="Todo"
-            value={todos.title}
+            value={newTodo}
+            // value={todos.title}
             onChange={(e) => setNewTodo(e.target.value)}
           />
           <button type="submit">Add</button>
@@ -38,12 +39,12 @@ export const TodoRT = () => {
       <div className="todos">
         {count > 0 && 
         todos.map((todo) => (
-          <div key={todo._id} className="todo" >
+          <div key={todo.id} className="todo" >
             <div className="title">{todo.title}</div>
             <button onClick={handleRemoveTodo}>Delete</button>
           </div>
         ))
-        }
+      }
         {count === 0 && <p>No todos</p>}
       </div>
     </div>
