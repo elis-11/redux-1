@@ -6,13 +6,6 @@ import "./Todos.scss";
 export const TodoRT = () => {
   const [newTodo, setNewTodo] = useState('');
 
-  // const saveTodosInLS = localStorage.getItem("newTodo");
-  // if (saveTodosInLS) {
-  //   return JSON.parse(saveTodosInLS);
-  // } else {
-  //   return [];
-  // }
-
   // const todos = useSelector((state) => state.todoRT.todos);
   // const count = useSelector((state) => state.todoRT.count)
   const { count, todos } = useSelector((state) => state.todoRT);
@@ -22,7 +15,6 @@ export const TodoRT = () => {
   const handleAddTodo = (e) => {
     e.preventDefault();
     dispatch(addTodo(newTodo));
-    localStorage.setItem("new-Todo", JSON.stringify(todos));
     setNewTodo("");
     inputRef.current.focus();
   };
