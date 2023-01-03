@@ -1,15 +1,21 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import "./Todos.scss";
 
 export const CrudRedux = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: "t1",
-      title: "Learn",
-      description: "JS",
-    },
-  ]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodosInLs = localStorage.getItem("todos");
+    if (savedTodosInLs) {
+      return JSON.parse(savedTodosInLs);
+    } else {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const [newTodo, setNewTodo] = useState({ title: "", description: "" });
   const inputRef = useRef();
 
