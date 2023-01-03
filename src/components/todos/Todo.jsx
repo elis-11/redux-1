@@ -42,9 +42,9 @@ export const Todo = () => {
         <button onClick={createTodo}>Add</button>
       </div>
       <div className="todos">
-        {todos.map((todo) => (
+        {todos.map((todo, index) => (
           <div key={todo._id} className="todo">
-            <div className="title">{todo.title}</div>
+            <div className="title">{index + 1}: {todo.title}</div>
             <div className="description">{todo.description}</div>
           </div>
         ))}

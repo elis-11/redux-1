@@ -50,16 +50,18 @@ export const TodoCRUD = () => {
           onChange={handleAddTodo}
         />
         <input
-          onChange={handleAddTodo}
-          value={newTodo.description}
           type="text"
           title="description"
           placeholder="Description"
+          value={newTodo.description}
+          onChange={handleAddTodo}
         />
         <button onClick={addTodo}>Add</button>
       </div>
+
         {todos.length ? (
           <div className="todos">
+            
             {todos.map((todo) => (
               <div key={todo.id} className="todo">
                 <div className="title">{todo.title}</div>
