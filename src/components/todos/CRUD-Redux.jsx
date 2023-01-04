@@ -3,8 +3,8 @@ import { FaTrashAlt } from "react-icons/fa";
 import "./Todos.scss";
 
 export const CrudRedux = () => {
-  const [newTodos, setNewTodos] = useState(() => {
-    const savedTodosInLs = localStorage.getItem("newTodos");
+  const [cruds, setCruds] = useState(() => {
+    const savedTodosInLs = localStorage.getItem("cruds");
     if (savedTodosInLs) {
       return JSON.parse(savedTodosInLs);
     } else {
@@ -13,31 +13,31 @@ export const CrudRedux = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("newTodos", JSON.stringify(newTodos));
-  }, [newTodos]);
+    localStorage.setItem("cruds", JSON.stringify(cruds));
+  }, [cruds]);
 
-  const [newTodo, setNewTodo] = useState({ title: "", description: "" });
+  const [newCrud, setNewCrud] = useState({ title: "", description: "" });
   const inputRef = useRef();
 
   const addTodo = () => {
     const todoNewState = {
       id: new Date().toString(),
-      title: newTodo.title,
-      description: newTodo.description,
+      title: newCrud.title,
+      description: newCrud.description,
     };
-    setNewTodos([...newTodos, todoNewState]);
-    setNewTodo({ ...newTodo, title: "", description: "" });
+    setCruds([...cruds, todoNewState]);
+    setNewCrud({ ...newCrud, title: "", description: "" });
     inputRef.current.focus();
   };
 
   const handleAddTodo = (e) => {
-    setNewTodo({ ...newTodo, [e.target.name]: e.target.value });
+    setNewCrud({ ...newCrud, [e.target.name]: e.target.value });
   };
 
   const handleDeleteTodo = (id) => {
-    setNewTodos(newTodos.filter((todo) => todo.id !== id));
-    // const deletePerson = newTodos.filter((todo) => todo.id !== id);
-    // setNewTodos(deletePerson);
+    setCruds(cruds.filter((todo) => todo.id !== id));
+    // const deletePerson = cruds.filter((todo) => todo.id !== id);
+    // setCruds(deletePerson);
   };
 
   return (
@@ -49,14 +49,14 @@ export const CrudRedux = () => {
           type="text"
           name="title"
           placeholder="Title"
-          value={newTodo.title}
+          value={newCrud.title}
           onChange={handleAddTodo}
         />
         <input
           type="text"
           name="description"
           placeholder="Description"
-          value={newTodo.description}
+          value={newCrud.description}
           onChange={handleAddTodo}
         />
         <button onClick={addTodo}>+</button>
@@ -64,15 +64,15 @@ export const CrudRedux = () => {
       </div>
 
       <div className="todos">
-        {newTodos.map((todo, index) => (
-          <div key={todo.id} className="todo">
+        {cruds.map((crud, index) => (
+          <div key={crud.id} className="todo">
             <div className="title">
-              {index + 1}: {todo.title}
+              {index + 1}: {crud.title}
             </div>
-            <div className="description">{todo.description}</div>
+            <div className="description">{crud.description}</div>
             <FaTrashAlt
               type="button"
-              onClick={() => handleDeleteTodo(todo.id)}
+              onClick={() => handleDeleteTodo(crud.id)}
             />
           </div>
         ))}
