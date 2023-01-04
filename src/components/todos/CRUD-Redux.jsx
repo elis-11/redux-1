@@ -3,8 +3,8 @@ import { FaTrashAlt } from "react-icons/fa";
 import "./Todos.scss";
 
 export const CrudRedux = () => {
-  const [todos, setTodos] = useState(() => {
-    const savedTodosInLs = localStorage.getItem("todos");
+  const [newTodos, setNewTodos] = useState(() => {
+    const savedTodosInLs = localStorage.getItem("newTodos");
     if (savedTodosInLs) {
       return JSON.parse(savedTodosInLs);
     } else {
@@ -13,8 +13,8 @@ export const CrudRedux = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    localStorage.setItem("newTodos", JSON.stringify(newTodos));
+  }, [newTodos]);
 
   const [newTodo, setNewTodo] = useState({ title: "", description: "" });
   const inputRef = useRef();
@@ -25,7 +25,7 @@ export const CrudRedux = () => {
       title: newTodo.title,
       description: newTodo.description,
     };
-    setTodos([...todos, todoNewState]);
+    setNewTodos([...newTodos, todoNewState]);
     setNewTodo({ ...newTodo, title: "", description: "" });
     inputRef.current.focus();
   };
@@ -35,9 +35,9 @@ export const CrudRedux = () => {
   };
 
   const handleDeleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-    // const deletePerson = todos.filter((todo) => todo.id !== id);
-    // setTodos(deletePerson);
+    setNewTodos(newTodos.filter((todo) => todo.id !== id));
+    // const deletePerson = newTodos.filter((todo) => todo.id !== id);
+    // setNewTodos(deletePerson);
   };
 
   return (
@@ -64,7 +64,7 @@ export const CrudRedux = () => {
       </div>
 
       <div className="todos">
-        {todos.map((todo, index) => (
+        {newTodos.map((todo, index) => (
           <div key={todo.id} className="todo">
             <div className="title">
               {index + 1}: {todo.title}

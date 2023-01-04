@@ -15,17 +15,17 @@ export const Todo = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const [newTodo, setNewTodo] = useState({ title: "", description: "" });
+  const [todo, setTodo] = useState({ title: "", description: "" });
   const inputRef = useRef();
 
   const createTodo = () => {
     const addTodo = {
       _id: new Date().toString(),
-      title: newTodo.title,
-      description: newTodo.description,
+      title: todo.title,
+      description: todo.description,
     };
     setTodos([...todos, addTodo]);
-    setNewTodo({ ...newTodo, title: "", description: "" });
+    setTodo({ ...todo, title: "", description: "" });
     inputRef.current.focus();
   };
   const deleteTodo = (id) => {
@@ -40,17 +40,17 @@ export const Todo = () => {
           ref={inputRef}
           type="text"
           placeholder="Title"
-          value={newTodo.title}
+          value={todo.title}
           onChange={(e) => {
-            setNewTodo({ ...newTodo, title: e.target.value });
+            setTodo({ ...todo, title: e.target.value });
           }}
         />
         <input
           type="text"
           placeholder="What needs to be done?"
-          value={newTodo.description}
+          value={todo.description}
           onChange={(e) => {
-            setNewTodo({ ...newTodo, description: e.target.value });
+            setTodo({ ...todo, description: e.target.value });
           }}
         />
         <button onClick={createTodo}>Add</button>
