@@ -1,14 +1,25 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
 import "./Todos.scss";
 
 export const Todo = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedInLst = localStorage.getItem("todos");
+    if (savedInLst) {
+      return JSON.parse(savedInLst);
+    } else {
+      return [];
+    }
+  });
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const [newTodo, setNewTodo] = useState({ title: "", description: "" });
   const inputRef = useRef();
 
   const createTodo = () => {
     const addTodo = {
-      // _id: Math.random().toString(36).substring(2, 10),
       _id: new Date().toString(),
       title: newTodo.title,
       description: newTodo.description,
@@ -16,6 +27,9 @@ export const Todo = () => {
     setTodos([...todos, addTodo]);
     setNewTodo({ ...newTodo, title: "", description: "" });
     inputRef.current.focus();
+  };
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todos) => todos._id !== id));
   };
 
   return (
@@ -44,8 +58,11 @@ export const Todo = () => {
       <div className="todos">
         {todos.map((todo, index) => (
           <div key={todo._id} className="todo">
-            <div className="title">{index + 1}: {todo.title}</div>
+            <div className="title">
+              {index + 1}: {todo.title}
+            </div>
             <div className="description">{todo.description}</div>
+            <FaTrashAlt role="button" onClick={() => deleteTodo(todo._id)} />
           </div>
         ))}
       </div>
