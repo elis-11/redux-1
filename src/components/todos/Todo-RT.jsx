@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, removeTodo } from "../../redux/slices/todos/todoRTSlice";
 import "./Todos.scss";
-import {FaTrashAlt} from 'react-icons/fa'
+import { FaTrashAlt } from "react-icons/fa";
 
 export const TodoRT = () => {
   const { todosRT, count } = useSelector((state) => state.todoRT);
@@ -45,8 +45,10 @@ export const TodoRT = () => {
                 {":"} {todo.title}
               </div>
               {/* <button onClick={() => removeTodo(todo.id)} role="button"> */}
-              <FaTrashAlt  onClick={() => dispatch(removeTodo(todo.id))}
-                role="button" />
+              <FaTrashAlt
+                onClick={() => dispatch(removeTodo(todo.id))}
+                role="button"
+              />
             </div>
           ))}
         {count === 0 && <p>No todos</p>}

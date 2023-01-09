@@ -1,14 +1,21 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Todos.scss";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 export const TodoCRUD = () => {
   const inputRef = useRef()
 
-  const [todos, setTodos] = useState([
-    { id: "t1", title: "Learn", description: "JS" },
-    { id: "t2", title: "Write", description: "CV" },
-  ]);
+  const [todos, setTodos] = useState(()=>{
+    const savedTLS = localStorage.getItem('todo-crud')
+    if(savedTLS) {
+          return JSON.parse(savedTLS)
+    } else {
+      return [] }
+  });
+
+  useEffect(()=>{
+    localStorage.setItem('todo-crud', JSON.stringify(todos))
+  }, [todos])
 
   const [newTodo, setNewTodo] = useState({
     title: "",

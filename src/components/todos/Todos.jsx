@@ -7,10 +7,10 @@ import { TodoRT } from './Todo-RT'
 export const Todos = () => {
   return (
     <div>
-        <Todo />
         <TodoRT />
-        <TodoCRUD />
         <CrudRedux />
+        <Todo />
+        <TodoCRUD />
     </div>
   )
 }
