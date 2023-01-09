@@ -4,6 +4,7 @@ import sliceB from "./slices/counts/sliceB";
 import sliceC from "./slices/counts/sliceC";
 import counter from "./slices/counterSlice";
 import todoRT from "./slices/todos/todoRTSlice";
+import cruds from "./slices/todos/crudSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     sliceC,
     counter,
     todoRT,
+    cruds,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
