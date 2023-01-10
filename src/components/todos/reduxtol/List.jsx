@@ -1,17 +1,16 @@
 import { Item } from "./Item";
 import "../Todos.scss";
+import { useSelector } from "react-redux";
 
-export const List = ({ items, toggleCompleted, removeItem }) => {
-    console.log(items)
+export const List = () => {
+  const items = useSelector((state) => state.items.items); // cut items from store, → from Slice and use it
+
+  console.log(items);
   return (
     <div className="todos">
-        {items.map((item) => (
-            <Item key={item.id}
-            toggleCompleted={toggleCompleted}
-            removeItem={removeItem}
-            {...item}
-            />
-        ))}
-      </div>
+      {items.map((item) => (
+        <Item key={item.id} {...item} />
+      ))}
+    </div>
   );
 };
