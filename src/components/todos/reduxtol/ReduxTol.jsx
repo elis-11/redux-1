@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import '../Todos.scss'
+import "../Todos.scss";
+import { InputField } from "./InputField";
+import { List } from "./List";
 
 export const ReduxTol = () => {
   const [items, setItems] = useState([]);
@@ -36,28 +38,12 @@ export const ReduxTol = () => {
   return (
     <div className="Todo">
       <h2>Redux-Toolkit</h2>
-      <label className="todort">
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <button onClick={addItem}>Add</button>
-      </label>
-      <div className="todos">
-        {items.map((item) => (
-          <div key={item.id} className="todo">
-            <input type="checkbox" checked={item.completed} onChange={()=>toggleCompleted(item.id)} />
-            <span className="title">{item.title}</span>
-            <span
-              onClick={() => removeItem(item.id)}
-              style={{ color: "red", cursor: "pointer" }}
-            >
-              &times;
-            </span>
-          </div>
-        ))}
-      </div>
+      <InputField title={title} handleInput={setTitle} handleSubmit={addItem} />
+      <List
+        items={items}
+        toggleCompleted={toggleCompleted}
+        removeItem={removeItem}
+      />
     </div>
   );
 };
